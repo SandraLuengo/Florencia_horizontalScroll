@@ -6,15 +6,20 @@ html,body {
   margin: 0;
   padding: 0;
 }
+html::-webkit-scrollbar { 
+  display: none; 
+}
 
 .App {
-  width: 600rem;
+  width:150rem;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y, 0.5) * 100%), transparent 0, rgb(41, 32, 131) 50px), url('/img/fondo3.png'); 
+  background-image: radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y, 0.5) * 100%), transparent 0, #0d0d0dee 8rem), url('/img/ciudad4.jpg'); 
   background-size: contain;
-  // background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: center;
 
 }
