@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import './dom';
+import './domFunctions';
 import Arrow from './components/Arrow/Arrow'
 
 class App extends Component {

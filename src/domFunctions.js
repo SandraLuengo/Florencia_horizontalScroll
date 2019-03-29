@@ -12,7 +12,8 @@ window.onload = () => {
   document.querySelector('.arrowContent').style.width = `${window.innerWidth}px`;
 
   window.addEventListener("mousemove", (e) => {
-    move();
+
+    (mousePosition < actualWidth * 0.25)?moveLeft():moveRight();
     mousePosition = e.clientX;
     xVal = (e.clientX + document.documentElement.scrollLeft) / width;
     yVal = e.clientY / heigth;
@@ -21,7 +22,8 @@ window.onload = () => {
   });
 
   window.addEventListener("scroll", (e) => {
-    move();
+
+    (mousePosition < actualWidth * 0.25)?moveLeft():moveRight();
     scrollLeft = document.documentElement.scrollLeft;
     main.style.setProperty("--mouse-x", ((mousePosition + scrollLeft) / main.clientWidth));
     main.style.setProperty("--mouse-y", yVal);
@@ -32,56 +34,34 @@ window.onload = () => {
     document.querySelector('.arrowContent').style.width = `${window.innerWidth}px`;
   }
 
-
-  let move = () => {
-    if (mousePosition < actualWidth * 0.25) {
-      if ((mousePosition >= 0 && mousePosition < actualWidth * 0.2)) {
-        document.querySelector('.right').style.visibility = 'visible';
-        document.querySelector('.left').style.visibility = 'hidden';
-        return {
-          true: true,
-          mov: 'iz'
-        };
-
-      } else {
-
-        return {
-          true: false,
-          mov: 'iz'
-        };;
-      }
+  let moveLeft = () => {
+    if ((mousePosition >= 0 && mousePosition < actualWidth * 0.2)) {
+      document.querySelector('.right').style.visibility = 'visible';
+      document.querySelector('.left').style.visibility = 'hidden';
+      return true;
 
     } else {
 
-      if (mousePosition >= actualWidth * 0.7 && mousePosition <= actualWidth) {
-        document.querySelector('.right').style.visibility = 'hidden';
-        document.querySelector('.left').style.visibility = 'visible';
-        return {
-          true: true,
-          mov: 'de'
-        }
-
-      } else {
-        return {
-          true: false,
-          mov: 'iz'
-        };
-      }
+      return false;
     }
-
-
   }
 
-  let repeatOften = () => {
-    var obj = move();
-    if (obj.true) {
-      if (obj.mov === 'iz') {
-        window.scrollBy(-10, 0);
-      } else if (obj.mov === 'de') {
+  let moveRight = () => {
+    if (mousePosition >= actualWidth * 0.7 && mousePosition <= actualWidth) {
+      document.querySelector('.right').style.visibility = 'hidden';
+      document.querySelector('.left').style.visibility = 'visible';
+      return true
 
-        window.scrollBy(10, 0)
-      }
+    } else {
+      return false
     }
+  }
+
+
+  let repeatOften = () => {
+
+    moveLeft()? window.scrollBy(-10, 0):moveRight()&& window.scrollBy(10, 0);
+
     requestAnimationFrame(repeatOften);
   }
 
