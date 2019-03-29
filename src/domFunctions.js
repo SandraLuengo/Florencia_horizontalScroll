@@ -10,6 +10,7 @@ window.onload = () => {
   let actualWidth = window.innerWidth;
 
   document.querySelector('.arrowContent').style.width = `${window.innerWidth}px`;
+  document.querySelector('.textContent').style.width = `${window.innerWidth}px`;
 
   window.addEventListener("mousemove", (e) => {
 
@@ -32,12 +33,14 @@ window.onload = () => {
 
   window.onresize = () => {
     document.querySelector('.arrowContent').style.width = `${window.innerWidth}px`;
+    document.querySelector('.textContent').style.width = `${window.innerWidth}px`;
+
   }
 
   let moveLeft = () => {
     if ((mousePosition >= 0 && mousePosition < actualWidth * 0.2)) {
-      document.querySelector('.right').style.visibility = 'visible';
-      document.querySelector('.left').style.visibility = 'hidden';
+      document.querySelector('.right').style.opacity = '1';
+      document.querySelector('.left').style.opacity = '0';
       return true;
 
     } else {
@@ -48,8 +51,8 @@ window.onload = () => {
 
   let moveRight = () => {
     if (mousePosition >= actualWidth * 0.7 && mousePosition <= actualWidth) {
-      document.querySelector('.right').style.visibility = 'hidden';
-      document.querySelector('.left').style.visibility = 'visible';
+      document.querySelector('.right').style.opacity = '0';
+      document.querySelector('.left').style.opacity = '1';
       return true
 
     } else {
