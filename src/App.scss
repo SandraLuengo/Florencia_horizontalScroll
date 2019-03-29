@@ -16,10 +16,31 @@ html::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y, 0.5) * 100%), transparent 0, #0d0d0dee 8rem), url('/img/ciudad4.jpg'); 
-  background-size: contain;
+  background-image: radial-gradient(circle at calc(var(--mouse-x) * 100%) calc(var(--mouse-y, 0.5) * 100%), transparent 0, #0d0d0df3 8rem), url('/img/ciudad4.jpg'); 
+  background-size: cover;
   background-repeat: no-repeat;
   background-position-y: center;
   background-position-x: center;
 
+}
+
+.arrowContent {
+  position: fixed;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3%;
+  transition: all 1s;
+
+  img {
+    width: 5%;
+    height: 7%;
+  }
+  .right {
+   visibility: visible;
+  }
+  .left{
+    transform: rotate(180deg);
+    visibility: hidden;
+  }
 }
